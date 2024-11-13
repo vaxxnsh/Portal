@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const SignupPage = () => {
+  const router = useRouter();
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -15,17 +16,25 @@ const SignupPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    console.log({
+      fullName,
+      username,
+      email,
+      password,
+      isAdmin,
+    });
+
     // Basic validation check
     if (!fullName || !username || !email || !password) {
       alert("Please fill out all fields.");
       return;
     }
 
-    const url = isAdmin ? "http://localhost:8080/admin/register" : "http://localhost:8080/user/register";
+    const url =   "http://localhost:8080/user/register";
     
     try {
       const response = await axios.post(url, {
-        fullName,
+        fullname : fullName,
         username,
         email,
         password,
@@ -38,7 +47,7 @@ const SignupPage = () => {
       // Update Zustand store with user data
       const setUser = useUserStore.getState().setUser;
       setUser({
-        fullName: response.data.fullName,
+        fullName: response.data.fullname,
         username: response.data.username,
         email: response.data.email,
         isAdmin,
@@ -48,7 +57,7 @@ const SignupPage = () => {
       Cookies.set("userToken", response.data.token, { expires: 7 }); // Set token or session data, expires in 7 days
 
       alert("Registration successful!");
-      
+      router.replace("/");
     } catch (error) {
       // Handle errors from the server or network
       if (axios.isAxiosError(error) && error.response) {
@@ -59,15 +68,6 @@ const SignupPage = () => {
         alert("An unexpected error occurred. Please try again.");
       }
     }
-
-    // Log form data for debugging
-    console.log({
-      fullName,
-      username,
-      email,
-      password,
-      isAdmin,
-    });
 };
 
 
@@ -111,15 +111,6 @@ const SignupPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full text-black outline-none"
             />
-          </div>
-          <div className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              checked={isAdmin}
-              onChange={(e) => setIsAdmin(e.target.checked)}
-              className="text-[#0f172b]"
-            />
-            <label className="text-[#0f172b] text-xl">Admin</label>
           </div>
           <button
             type="submit"

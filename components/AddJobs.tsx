@@ -1,8 +1,11 @@
+"use client";
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AlertCircle, Building2, MapPin, Calendar, Briefcase, DollarSign } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import axios from 'axios';
+import { form } from 'framer-motion/client';
 
 const CreateJobListing = () => {
   const [formData, setFormData] = useState({
@@ -37,15 +40,15 @@ const CreateJobListing = () => {
 
     try {
       // Replace with your API endpoint
-      const response = await fetch('/api/jobs', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const response = await axios.post('http://localhost:8080/job/create', {
+       jobrole : formData.title,
+       skillsreq : formData.requirements,
+       joblocation : formData.location,
+       description : formData.description,
+
       });
 
-      if (!response.ok) {
+      if (response.data.error) {
         throw new Error('Failed to create job listing');
       }
 
@@ -71,7 +74,7 @@ const CreateJobListing = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className="w-[600px] mx-auto p-4">
       {showSuccess && (
         <Alert className="mb-4 bg-green-50 text-green-700">
           <AlertCircle className="h-4 w-4" />

@@ -1,11 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useUserStore } from '@/store/userStore';
 
 const Join = () => {
   const router = useRouter();
   const [roomid, setRoomid] = useState("");
   const [isMounted, setIsMounted] = useState(false);
+
+  const { fullName, email, setUser } = useUserStore((state) => ({
+    fullName: state.fullName,
+    email: state.email,
+    setUser: state.setUser,
+  }));
+
+  console.log(fullName);
 
   const handleJoin = () => {
     if (roomid.trim()) {

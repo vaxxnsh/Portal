@@ -4,6 +4,7 @@ import { createWorker } from 'tesseract.js';
 import axios from 'axios';
 import { main } from 'framer-motion/client';
 import Header from '@/components/Nav';
+import { AuroraBackground } from '@/components/ui/aurora-background';
 
 const Home: React.FC = () => {
 
@@ -77,8 +78,9 @@ const Home: React.FC = () => {
 
   return (
     <main className='w-full h-screen'>
+     
       <Header/>
-          <div className="flex flex-col items-center p-8">
+      <div className="flex flex-col items-center justify-center p-8">
       <h1 className="text-2xl font-bold mb-4">ImText</h1>
       <p className="mb-6 text-gray-600">Extract words from images!</p>
 
@@ -116,7 +118,9 @@ const Home: React.FC = () => {
           </div>
         )}
       </div>
-    </div>
+    </div>  
+      
+
     </main>
   );
 };

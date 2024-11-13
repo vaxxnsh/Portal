@@ -47,15 +47,6 @@ const SignupPage = () => {
               className="w-full text-black outline-none"
             />
           </div>
-          <div className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              checked={isAdmin}
-              onChange={(e) => setIsAdmin(e.target.checked)}
-              className="text-[#0f172b]"
-            />
-            <label className="text-[#0f172b] text-xl">Admin</label>
-          </div>
           <button
             type="submit"
             className="bg-[#0f172b] text-white py-2 px-4 rounded-md hover:bg-[#1e293b] transition-colors duration-300"

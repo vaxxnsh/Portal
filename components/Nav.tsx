@@ -41,6 +41,7 @@ const Header = () => {
           <Link href="/" className={styles.navLink}>Home</Link>
           <Link href="/mentorship" className={styles.navLink}>Mentorship</Link>
           <Link href="/review" className={styles.navLink}>CV Review</Link>
+          <Link href="/addjobs" className={styles.navLink}>Add Jobs</Link>
           <Button title="Sign Up" href="/sign-up"/>
           <Button title="Sign In" href="/sign-in"/>
         </div>
