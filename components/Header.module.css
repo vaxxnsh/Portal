@@ -1,0 +1,136 @@
+/* Header.module.css */
+
+/* Header container styling */
+.headerContainer {
+  width: 100%;
+  background-color: #020617;
+  padding: 15px 2px; /* Reduced vertical padding to balance the layout */
+  color: white;
+  
+}
+
+/* Inner container styling */
+.innerContainer {
+  max-width: 100%;
+  margin: 0 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo styling */
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+}
+
+/* Nav links styling */
+.navLinks {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  gap: 24px;
+  color: white;
+}
+
+/* Nav link styling (desktop only) */
+.navLink {
+  color: white;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: #63b3ed;
+  text-decoration: underline;
+}
+
+.bookButton {
+  background-color: #2563eb; /* Original color */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+.bookButton2 {
+  background-color: green; /* Original color */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.bookButton2:hover {
+  background-color: darkgreen;
+  text-decoration: underline;
+}
+
+.bookButton:hover {
+  background-color: #1e4db7;
+  text-decoration: underline;
+}
+
+/* Mobile menu button styling */
+.mobileMenuButton {
+  background-color: black;
+  font-size: 1.5rem;
+  color: white;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile Dropdown Styling */
+.mobileDropdown {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: black;
+  align-items: flex-start; /* Align links to the left */
+}
+
+.mobileNavLink {
+  display: flex;
+  justify-content: center;
+  padding : 0px 5px;
+  text-align: center; /* Ensure text aligns to the left */
+}
+
+/* Responsive Styles for Mobile and Tablet */
+@media (max-width: 1024px) {
+  /* Hide desktop nav links and book button on smaller screens */
+  .navLinks {
+    display: none;
+  }
+
+  /* Show the mobile menu button */
+  .mobileMenuButton {
+    display: block;
+  }
+
+  /* Show mobile dropdown when menu is open */
+  .showMenu {
+    display: flex;
+  }
+
+  /* Ensure dropdown shows correctly on tablets */
+  .mobileDropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 1rem;
+    background-color: #0f172b;
+    padding: 1rem;
+  }
+}
